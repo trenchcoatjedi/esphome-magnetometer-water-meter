@@ -348,8 +348,6 @@ i2c:
     scl: GPIO12
     sda: GPIO13
     scan: true
-    frequency: 100kHz
-    timeout: 10ms
 
 sensor:
   - platform: sht3xd

@@ -339,13 +339,25 @@ button:
                    axis_with_largest_range.c_str(), max_range_found, lower_threshold, upper_threshold);
 
 i2c:
-  - id: ${prefix_id}i2c_bus
+  - id: bus_a
     scl: ${i2c_scl}
     sda: ${i2c_sda}
     frequency: 50kHz
     scan: false
+  - id: bus_b
+    scl: GPIO10
+    sda: GPIO9
+    scan: true
 
 sensor:
+  - platform: sht3xd
+    i2c_id: bus_b 
+    temperature:
+      name: "Water Meter Temperature"
+    humidity:
+      name: "Water Meter Humidity"
+    address: 0x44
+    update_interval: 60s  # How often to read the sensor
   # Holds the magnetic field strength value of x, y, or z depending on the axis template select.
   # Increments counters when value crosses thresholds.
   - platform: template
@@ -426,7 +438,7 @@ sensor:
   # https://esphome.io/components/sensor/qmc5883l.html
   - platform: qmc5883l
     id: ${prefix_id}qmc5883l_id
-    i2c_id: ${prefix_id}i2c_bus
+    i2c_id: bus_a
     address: 0x0D
     field_strength_x:
       id: ${prefix_id}qmc5883l_axis_x

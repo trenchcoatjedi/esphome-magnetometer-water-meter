@@ -365,7 +365,7 @@ sensor:
       device_class: "humidity"
       accuracy_decimals: 1
       state_class: "measurement"
-      icon: "mdi:humidity"
+      icon: "mdi:hygrometer"
     address: 0x44
     update_interval: 60s  # How often to read the sensor
   # Holds the magnetic field strength value of x, y, or z depending on the axis template select.

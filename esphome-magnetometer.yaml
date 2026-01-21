@@ -348,14 +348,26 @@ i2c:
     scl: GPIO12
     sda: GPIO13
     scan: false
+    frequency: 800kHz
+    timeout: 10ms
 
 sensor:
   - platform: sht3xd
     i2c_id: bus_b 
     temperature:
       name: "Water Meter Temperature"
+      unit_of_measurement: "°C"
+      device_class: "temperature"
+      accuracy_decimals: 1
+      state_class: "measurement"
+      icon: "mdi:thermometer"
     humidity:
       name: "Water Meter Humidity"
+      unit_of_measurement: "%"
+      device_class: "humidity"
+      accuracy_decimals: 1
+      state_class: "measurement"
+      icon: "mdi:humidity"
     address: 0x44
     update_interval: 60s  # How often to read the sensor
   # Holds the magnetic field strength value of x, y, or z depending on the axis template select.

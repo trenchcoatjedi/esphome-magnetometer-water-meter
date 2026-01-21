@@ -347,8 +347,8 @@ i2c:
   - id: bus_b
     scl: GPIO12
     sda: GPIO13
-    scan: false
-    frequency: 800kHz
+    scan: true
+    frequency: 100kHz
     timeout: 10ms
 
 sensor:

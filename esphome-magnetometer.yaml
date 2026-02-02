@@ -343,7 +343,7 @@ i2c:
     scl: ${i2c_scl}
     sda: ${i2c_sda}
     frequency: 50kHz
-    scan: false
+    scan: true
 
 sensor:
   # Holds the magnetic field strength value of x, y, or z depending on the axis template select.

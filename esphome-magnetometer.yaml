@@ -374,6 +374,8 @@ display:
     address: 0x3C
     lambda: |-
       it.printf(0, 0, id(roboto), "Flow Rate: %.1f", id(sensor_flow).state);
+      it.printf(0, 17, id(roboto), "Total: %.1f", id(sensor_total).state);
+      
 
 font:
   - file: "gfonts://Roboto"
@@ -562,7 +564,7 @@ sensor:
       - delta: 1
 
   - platform: template
-    id: ${prefix_id}sensor_total
+    id: sensor_total
     name: ${prefix_name}Total
     lambda: return id(${prefix_id}half_rotations_total) * id(${prefix_id}volume_per_half_rotation).state;
     update_interval: 10s

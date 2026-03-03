@@ -373,38 +373,12 @@ display:
     model: "SSD1306 128x32"
     address: 0x3C
     lambda: |-
-   // Draw water droplet in lower-left corner (x=0,y=32)
-   for(int x = 1; x <= 16; x++) {
-     for(int y = 32 - 17 + 1; y <= 32; y++) {  // Top part of droplet
-       if(x < 8) {
-         it.pixelSet(0, y, 0xFF00FF);  // Magenta color for water effect
-       }
-     }
-   }
-
-   // Draw the curved bottom part
-   int base_y = 32 - 17;
-   for(int x = 1; x <= 16; x++) {
-     if(x < 8) {  // Left half of droplet
-       it.pixelSet(0, base_y + (x * 2), 0xFF00FF);
-     } else {      // Right half of droplet
-       it.pixelSet(0, base_y + ((16 - x) * 2), 0xFF00FF);
-     }
-   }
-
-   // Fill the main body
-   for(int y = base_y; y <= 32; y++) {
-     if(y >= base_y && y <= base_y + 8) {  // Top half of droplet
-       it.pixelSet(0, y, 0xFF00FF);
-     }
-   }
-
-   // Original text output
-      it.printf(0, 0, id(roboto), "Flow Rate: %.1f", id(sensor_flow).state);
-      it.printf(0, 17, id(roboto), "Total: %.1f");
-
-      
-
+#      it.printf(0, 0, id(roboto), "Flow Rate: %.1f", id(sensor_flow).state);
+#      it.printf(0, 17, id(roboto), "Total: %.1f");
+       it.printf(0, 0, id(roboto), "%s %.1f%s",
+             (id(sensor_flow).has_unit_of_measurement ? id(sensor_flow).unit_of_measurement : ""),
+             id(sensor_flow).state,
+             (id(sensor_flow).has_unit_of_measurement ? " " : ""));
 font:
   - file: "gfonts://Roboto"
     id: roboto

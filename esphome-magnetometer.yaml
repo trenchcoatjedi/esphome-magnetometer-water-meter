@@ -373,7 +373,7 @@ display:
     model: "SSD1306 128x32"
     address: 0x3C
     lambda: |-
-      it.print(0, 0, id(roboto), "Flow Rate: %.1f", id(sensor_flow).state);
+      it.printf(0, 0, id(roboto), "Flow Rate: %.1f", id(sensor_flow).state);
 
 font:
   - file: "gfonts://Roboto"
@@ -577,7 +577,7 @@ sensor:
           - delta: 0
 
   - platform: template
-    id: ${prefix_id}sensor_flow
+    id: sensor_flow
     name: ${prefix_name}Flow
     icon: mdi:speedometer
     lambda: |-

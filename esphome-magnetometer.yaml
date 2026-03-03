@@ -374,7 +374,7 @@ display:
     address: 0x3C
     lambda: |-
       it.printf(0, 0, id(roboto), "Flow: %.1f ft3/min", id(sensor_flow).state);
-      it.printf(0, 17, id(roboto), "Total: %.1f ft3");
+      it.printf(0, 17, id(roboto), "Total: %.1f ft3", id: sensor_total);
 
 font:
   - file: "gfonts://Roboto"

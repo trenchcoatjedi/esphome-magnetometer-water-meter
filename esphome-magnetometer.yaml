@@ -369,6 +369,7 @@ i2c:
     
 display:
   - platform: ssd1306_i2c
+    id: my_display
     i2c_id: bus_b
     model: "SSD1306 128x32"
     address: 0x3C
@@ -379,8 +380,9 @@ display:
          it.printf(0, 17, id(roboto), "Total: %.1f ft3", id(sensor_total).state;
      - id: page2
        lambda: |-
-        it.printf(0, 0, id(roboto), "%H:%M", id(esptime).now();
-
+         it.printf(0, 17, id(roboto), "Total: %.1f ft3", id(sensor_total).state;
+         it.printf(0, 0, id(roboto), "Flow: %.1f ft3/min", id(sensor_flow).state);
+         
 interval:
   - interval: 7s
     then:

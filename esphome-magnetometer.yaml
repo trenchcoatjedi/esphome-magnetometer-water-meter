@@ -377,10 +377,10 @@ display:
      - id: page1
        lambda: |-
          it.printf(0, 0, id(roboto), "Flow: %.1f ft3/min", id(sensor_flow).state);
-         it.printf(0, 17, id(roboto), "Total: %.1f ft3", id(sensor_total).state;
+         it.printf(0, 17, id(roboto), "Total: %.1f ft3", id(sensor_total).state);
      - id: page2
        lambda: |-
-         it.printf(0, 17, id(roboto), "Total: %.1f ft3", id(sensor_total).state;
+         it.printf(0, 17, id(roboto), "Total: %.1f ft3", id(sensor_total).state);
          it.printf(0, 0, id(roboto), "Flow: %.1f ft3/min", id(sensor_flow).state);
          
 interval:

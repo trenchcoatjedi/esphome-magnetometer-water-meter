@@ -373,7 +373,12 @@ display:
     model: "SSD1306 128x32"
     address: 0x3C
     lambda: |-
-      it.print(0, 0, id(font), "Hello World!");
+      it.print(0, 0, id(roboto_20), "Hello World!");
+
+font:
+  - file: "gfonts://Roboto"
+    id: roboto_20
+    size: 20
 
 sensor:
   # Holds the magnetic field strength value of x, y, or z depending on the axis template select.
@@ -456,7 +461,7 @@ sensor:
   # https://esphome.io/components/sensor/qmc5883l.html
   - platform: qmc5883l
     id: ${prefix_id}qmc5883l_id
-    i2c_id: ${prefix_id}i2c_bus
+    i2c_id: bus_a
     address: 0x0D
     field_strength_x:
       id: ${prefix_id}qmc5883l_axis_x

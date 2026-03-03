@@ -357,11 +357,23 @@ button:
                    axis_with_largest_range.c_str(), max_range_found, lower_threshold, upper_threshold);
 
 i2c:
-  - id: ${prefix_id}i2c_bus
+  - id: bus_a
     scl: ${i2c_scl}
     sda: ${i2c_sda}
     frequency: 50kHz
     scan: true
+  - id: bus_b
+    scl: GPIO12
+    sda: GPIO13
+    scan: true
+    
+display:
+  - platform: ssd1306_i2c
+    i2c_id: bus_b
+    model: "SSD1306 128x32"
+    address: 0x3C
+    lambda: |-
+      it.print(0, 0, id(font), "Hello World!");
 
 sensor:
   # Holds the magnetic field strength value of x, y, or z depending on the axis template select.

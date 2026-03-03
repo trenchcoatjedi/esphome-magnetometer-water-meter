@@ -361,11 +361,11 @@ i2c:
     scl: ${i2c_scl}
     sda: ${i2c_sda}
     frequency: 50kHz
-    scan: true
+    scan: false
   - id: bus_b
     scl: GPIO12
     sda: GPIO13
-    scan: true
+    scan: false
     
 display:
   - platform: ssd1306_i2c
@@ -373,12 +373,9 @@ display:
     model: "SSD1306 128x32"
     address: 0x3C
     lambda: |-
-#      it.printf(0, 0, id(roboto), "Flow Rate: %.1f", id(sensor_flow).state);
-#      it.printf(0, 17, id(roboto), "Total: %.1f");
-       it.printf(0, 0, id(roboto), "%s %.1f%s",
-             (id(sensor_flow).has_unit_of_measurement ? id(sensor_flow).unit_of_measurement : ""),
-             id(sensor_flow).state,
-             (id(sensor_flow).has_unit_of_measurement ? " " : ""));
+      it.printf(0, 0, id(roboto), "Flow Rate: %.1fft3/min", id(sensor_flow).state);
+      it.printf(0, 17, id(roboto), "Total: %.1fft3");
+
 font:
   - file: "gfonts://Roboto"
     id: roboto

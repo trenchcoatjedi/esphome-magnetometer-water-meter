@@ -373,8 +373,8 @@ display:
     model: "SSD1306 128x32"
     address: 0x3C
     lambda: |-
-      it.printf(0, 0, id(roboto), "Flow Rate: %.1fft3/min", id(sensor_flow).state);
-      it.printf(0, 17, id(roboto), "Total: %.1fft3");
+      it.printf(0, 0, id(roboto), "Flow: %.1f ft3/min", id(sensor_flow).state);
+      it.printf(0, 17, id(roboto), "Total: %.1f ft3");
 
 font:
   - file: "gfonts://Roboto"

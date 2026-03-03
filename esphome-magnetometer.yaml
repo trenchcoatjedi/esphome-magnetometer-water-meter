@@ -373,12 +373,12 @@ display:
     model: "SSD1306 128x32"
     address: 0x3C
     lambda: |-
-      it.print(0, 0, id(roboto_20), "Hello World!");
+      it.print(0, 0, id(roboto), "Flow Rate: %.1f", id(${prefix_id}sensor_flow).state);
 
 font:
   - file: "gfonts://Roboto"
-    id: roboto_20
-    size: 20
+    id: roboto
+    size: 16
 
 sensor:
   # Holds the magnetic field strength value of x, y, or z depending on the axis template select.

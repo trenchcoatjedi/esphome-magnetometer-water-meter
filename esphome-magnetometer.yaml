@@ -356,8 +356,7 @@ button:
           ESP_LOGI("${prefix_id}calibration", "Calibration complete: axis=%s, span=%.2f, thresholds=[%.1f, %.1f]",
                    axis_with_largest_range.c_str(), max_range_found, lower_threshold, upper_threshold);
 
-web_server:
-  port: 80
+
 
 sensor:
   - platform: uptime

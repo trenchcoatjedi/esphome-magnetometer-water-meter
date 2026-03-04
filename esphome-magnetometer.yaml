@@ -1,43 +1,6 @@
 ---
 # This config uses the QMC5883L, a triple-axis magnetometer, to read your water meter or gas meter.
 
-i2c:
-  - id: bus_a
-    scl: ${i2c_scl}
-    sda: ${i2c_sda}
-    frequency: 50kHz
-    scan: false
-  - id: bus_b
-    scl: GPIO12
-    sda: GPIO13
-    scan: false
-    
-display:
-  - platform: ssd1306_i2c
-    id: lcd
-    i2c_id: bus_b
-    model: "SSD1306 128x32"
-    address: 0x3C
-    pages:
-     - id: page1
-       lambda: |-
-         it.printf(0, 0, id(roboto), "Flow: %.1f ft3/min", id(sensor_flow).state);
-         it.printf(0, 17, id(roboto), "Total: %.1f ft3", id(sensor_total).state);
-     - id: page2
-       lambda: |-
-         it.printf(0, 0, id(roboto), "Wifi: %.1f%", id(wifi_percent).state);
-         it.printf(0, 17, id(roboto), "Uptime: %.1f", id(up).state);
-         
-interval:
-  - interval: 7s
-    then:
-      - display.page.show_next: lcd
-      - component.update: lcd
-
-font:
-  - file: "gfonts://Roboto"
-    id: roboto
-    size: 16
 
 substitutions:
   # water or gas
@@ -93,6 +56,44 @@ esphome:
   on_boot:
     then:
       - lambda: App.set_loop_interval(0);
+
+i2c:
+  - id: bus_a
+    scl: ${i2c_scl}
+    sda: ${i2c_sda}
+    frequency: 50kHz
+    scan: false
+  - id: bus_b
+    scl: GPIO12
+    sda: GPIO13
+    scan: false
+    
+display:
+  - platform: ssd1306_i2c
+    id: lcd
+    i2c_id: bus_b
+    model: "SSD1306 128x32"
+    address: 0x3C
+    pages:
+     - id: page1
+       lambda: |-
+         it.printf(0, 0, id(roboto), "Flow: %.1f ft3/min", id(sensor_flow).state);
+         it.printf(0, 17, id(roboto), "Total: %.1f ft3", id(sensor_total).state);
+     - id: page2
+       lambda: |-
+         it.printf(0, 0, id(roboto), "Wifi: %.1f%", id(wifi_percent).state);
+         it.printf(0, 17, id(roboto), "Uptime: %.1f", id(up).state);
+         
+interval:
+  - interval: 7s
+    then:
+      - display.page.show_next: lcd
+      - component.update: lcd
+
+font:
+  - file: "gfonts://Roboto"
+    id: roboto
+    size: 16
 
 logger:
   level: INFO

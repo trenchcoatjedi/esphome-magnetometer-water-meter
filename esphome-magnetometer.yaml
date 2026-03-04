@@ -358,27 +358,6 @@ button:
 
 
 
-sensor:
-  - platform: uptime
-    type: seconds
-    name: Uptime Sensor
-    id: up
-
-time:
-  - platform: homeassistant
-    id: homeassistant_time
-
-text_sensor:
-  - platform: template
-    name: "Current time"
-    id: current_time
-    lambda: |-
-      char str[17];
-      time_t currTime = id(homeassistant_time).now().timestamp;
-      strftime(str, sizeof(str), "%Y-%m-%d %H:%M", localtime(&currTime));
-      return  { str };
-    update_interval: 1s
-
 i2c:
   - id: bus_a
     scl: ${i2c_scl}

@@ -369,7 +369,7 @@ i2c:
     
 display:
   - platform: ssd1306_i2c
-    id: my_display
+    id: display
     i2c_id: bus_b
     model: "SSD1306 128x32"
     address: 0x3C
@@ -380,14 +380,14 @@ display:
          it.printf(0, 17, id(roboto), "Total: %.1f ft3", id(sensor_total).state);
      - id: page2
        lambda: |-
-         it.printf(0, 0, id(roboto), "Uptime: %f", id(up).state);
-         it.printf(0, 17, id(roboto), "Flow: %.1f ft3/min", id(sensor_flow).state);
+         it.strftime(0, 0, id(roboto), "Time: "%H:%M"", id(current_time).now());
+         it.printf(0, 17, id(roboto), "Uptime: %.1f", id(up).state);
          
 interval:
   - interval: 7s
     then:
-      - display.page.show_next: my_display
-      - component.update: my_display
+      - display.page.show_next: display
+      - component.update: display
 
 font:
   - file: "gfonts://Roboto"
@@ -606,3 +606,5 @@ sensor:
       - or:
           - throttle: 60s
           - delta: 0
+    on_value:
+      - display.page.show: page1

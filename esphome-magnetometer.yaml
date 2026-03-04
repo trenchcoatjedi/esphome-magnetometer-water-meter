@@ -371,7 +371,7 @@ i2c:
     
 display:
   - platform: ssd1306_i2c
-    id: display
+    id: lcd
     i2c_id: bus_b
     model: "SSD1306 128x32"
     address: 0x3C
@@ -388,8 +388,8 @@ display:
 interval:
   - interval: 7s
     then:
-      - display.page.show_next: display
-      - component.update: display
+      - display.page.show_next: lcd
+      - component.update: lcd
 
 font:
   - file: "gfonts://Roboto"

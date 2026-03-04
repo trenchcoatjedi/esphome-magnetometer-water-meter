@@ -81,8 +81,8 @@ display:
          it.printf(0, 17, id(roboto), "Total: %.1f ft3", id(sensor_total).state);
      - id: page2
        lambda: |-
-         it.printf(0, 0, id(roboto), "Wifi: %.1f", id(wifi_percent).state);
-         it.printf(0, 17, id(roboto), "Uptime: %.1f", id(up).state);
+         it.printf(0, 0, id(roboto), "Wifi: %f %", id(wifi_percent).state);
+         it.printf(0, 17, id(roboto), "Uptime: %.1f sec", id(up).state);
          
 interval:
   - interval: 7s

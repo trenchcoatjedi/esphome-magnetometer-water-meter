@@ -74,10 +74,17 @@ display:
     i2c_id: bus_b
     model: "SSD1306 128x32"
     address: 0x3C
-    lambda: |-
-       it.printf(0, 0, id(roboto), "Flow: %.1f ft3/min", id(sensor_flow).state);
-       it.printf(0, 17, id(roboto), "Total: %.1f ft3", id(sensor_total).state);
     rotation: 180
+    pages:
+      - id: page1
+        lambda: |-
+          it.printf(0, 0, id(roboto), "Flow: %.1f ft3/min", id(sensor_flow).state);
+          it.printf(0, 17, id(roboto), "Total: %.1f ft3", id(sensor_total).state);
+      - id: page2
+        lambda: |-
+          it.clear();
+          // #blank page
+
 
 font:
   - file: "gfonts://Roboto"
@@ -598,3 +605,13 @@ sensor:
       - or:
           - throttle: 60s
           - delta: 0
+    on_value:
+      then:
+        - if:
+            condition:
+              lambda: 'return id(sensor_flow).state > 0.00;'
+            then:
+              - display.page.show: page1
+            else:
+              - delay: 5
+              - display.page.show: page2

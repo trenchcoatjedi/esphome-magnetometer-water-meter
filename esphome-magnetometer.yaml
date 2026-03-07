@@ -613,5 +613,5 @@ sensor:
             then:
               - display.page.show: page1
             else:
-              - delay: 5
+              - delay: 5s
               - display.page.show: page2

@@ -3,9 +3,6 @@ external_components:
   - source: github://mazzhead/esphome-components@main
     components: [qmc5883p]
 
-logger:
-  logs:
-    qmc5883p: INFO
 number:
   - id: !remove ${prefix_id}temperature_offset
 sensor:

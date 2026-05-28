@@ -63,33 +63,33 @@ i2c:
     sda: ${i2c_sda}
     frequency: 50kHz
     scan: false
-  - id: bus_b
-    scl: GPIO12
-    sda: GPIO13
-    scan: false
+#   - id: bus_b
+#     scl: GPIO12
+#     sda: GPIO13
+#     scan: false
     
-display:
-  - platform: ssd1306_i2c
-    id: lcd
-    i2c_id: bus_b
-    model: "SSD1306 128x32"
-    address: 0x3C
-    rotation: 180
-    pages:
-      - id: page1
-        lambda: |-
-          it.printf(0, 0, id(roboto), "Flow: %.1f ft3/min", id(sensor_flow).state);
-          it.printf(0, 17, id(roboto), "Total: %.1f ft3", id(sensor_total).state);
-      - id: page2
-        lambda: |-
-          it.clear();
-          // #blank page
+# display:
+#   - platform: ssd1306_i2c
+#     id: lcd
+#     i2c_id: bus_b
+#     model: "SSD1306 128x32"
+#     address: 0x3C
+#     rotation: 180
+#     pages:
+#       - id: page1
+#         lambda: |-
+#           it.printf(0, 0, id(roboto), "Flow: %.1f ft3/min", id(sensor_flow).state);
+#           it.printf(0, 17, id(roboto), "Total: %.1f ft3", id(sensor_total).state);
+#       - id: page2
+#         lambda: |-
+#           it.clear();
+#           // #blank page
 
 
-font:
-  - file: "gfonts://Roboto"
-    id: roboto
-    size: 16
+# font:
+#   - file: "gfonts://Roboto"
+#     id: roboto
+#     size: 16
 
 api:
   services:

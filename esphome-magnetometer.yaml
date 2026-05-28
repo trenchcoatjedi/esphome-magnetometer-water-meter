@@ -601,13 +601,13 @@ sensor:
       - or:
           - throttle: 60s
           - delta: 0
-    on_value:
-      then:
-        - if:
-            condition:
-              lambda: 'return id(sensor_flow).state > 0.00;'
-            then:
-              - display.page.show: page1
-            else:
-              - delay: 5s
-              - display.page.show: page2
+    # on_value:
+    #   then:
+    #     - if:
+    #         condition:
+    #           lambda: 'return id(sensor_flow).state > 0.00;'
+    #         then:
+    #           - display.page.show: page1
+    #         else:
+    #           - delay: 5s
+    #           - display.page.show: page2
